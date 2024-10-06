@@ -25,32 +25,30 @@ double hours_difference(double time_1, double time_2)
 		time_2 is than a time in seconds time_1.
 	*/
 
-	assert(hours_difference(1800.0, 3600.0) == 0.5, "hours_difference(1800.0, 3600.0) == 0.5");
+	assert(hours_difference(1800.0, 3600.0) == 0.5, "hours_difference(1800.0, 3600.0) != 0.5");
 
-	assert(hours_difference(3600.0, 1800.0) == -0.5, "hours_difference(3600.0, 1800.0) == -0.5");
+	assert(hours_difference(3600.0, 1800.0) == -0.5, "hours_difference(3600.0, 1800.0) != -0.5");
 
-	assert(hours_difference(1800.0, 2160.0) == 0.1, "hours_difference(1800.0, 2160.0) == 0.1");
+	assert(hours_difference(1800.0, 2160.0) == 0.1, "hours_difference(1800.0, 2160.0) != 0.1");
 
-	assert(hours_difference(1800.0, 1800.0) == 0.0, "hours_difference(1800.0, 1800.0) == 0.0");
+	assert(hours_difference(1800.0, 1800.0) == 0.0, "hours_difference(1800.0, 1800.0) != 0.0");
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+	return static_cast<double>(hours) + minutes / static_cast<double>(60) + seconds / static_cast<double>(3600);
 	/*
 		Return the total number of hours in the specified number
 		of hours, minutes, and seconds.
 
 		Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-		>>> to_float_hours(0, 15, 0)
-		0.25
-
-		>>> to_float_hours(2, 45, 9)
-		2.7525
-
-		>>> to_float_hours(1, 0, 36)
-		1.01
 	*/
+
+	assert(to_float_hours(0, 15, 0) == 0.25, "to_float_hours(0, 15, 0) != 0.25");
+
+	assert(to_float_hours(2, 45, 9) == 2.7525, "to_float_hours(2, 45, 9) != 2.7525");
+
+	assert(to_float_hours(1, 0, 36) == 1.01, "to_float_hours(1, 0, 36) != 1.01");
 }
 
 double to_24_hour_clock(double hours)
@@ -61,6 +59,11 @@ double to_24_hour_clock(double hours)
 
 		Precondition: hours >= 0
 
+
+		You may wish to inspect various function in <cmath> to work
+		with integer and fractional part of a hours separately.
+
+	*/
 		>>> to_24_hour_clock(24)
 		0
 
@@ -75,11 +78,6 @@ double to_24_hour_clock(double hours)
 
 		>>> to_24_hour_clock(28.5)
 		4.5
-
-		You may wish to inspect various function in <cmath> to work
-		with integer and fractional part of a hours separately.
-
-	*/
 }
 
 /*
